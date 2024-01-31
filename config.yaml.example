@@ -1,0 +1,7 @@
+poll_interval: 10
+server_type: indexed_ergo
+indexed_ergo:
+  servers:
+    - name: qx
+      url: http://128.253.41.49:9053
+      fall_back: false
