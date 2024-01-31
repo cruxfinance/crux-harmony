@@ -267,7 +267,7 @@ impl<T: Node + Debug> HealthScoreMap<T> {
     }
 }
 
-async fn proxy<T: Body + std::marker::Send>(
+async fn proxy<T: Body + std::marker::Send + 'static>(
     client: ClientBuilder,
     req: Request<T>,
     url: Arc<RwLock<Uri>>,
@@ -331,7 +331,7 @@ where
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
-    let addr = SocketAddr::from(([127, 0, 0, 1], 8100));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 8100));
 
     let listener = TcpListener::bind(addr).await?;
 

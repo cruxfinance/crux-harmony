@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  crux-harmony:
+    image: crux-harmony
+    container_name: crux-harmony
+    build: .
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:9063:8100"
+    volumes:
+      - ./config.yaml:/app/config.yaml
